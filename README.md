@@ -283,21 +283,85 @@ myData = myArray[4]; //myData is igual to 13
 ### Manipulate Arrays with push()
 ```javascript
 var myArray = ["Hola", "como", "estas"];
-myArray.push(["what's","happening"]); //now my array is igual to ["Hola", "como", "estas", ["what's","happening"]]
+myArray.push(["what's","happening"]); //now my array is igual to ["Hola", "como", "estas", ["what's","happening"]] because push insert a value at the end of the array.
 ```
 ### Manipulate Arrays with pop()
 ```javascript
 var myArray = ["Hola", "como", "estas"];
-var removeFromMyArray = myArray.pop(); //now myArray is igual to ["Hola","como"]
-
-var ourArray = [ ["John" , 23], ["Quincy", 1] ]; 
-var removeFromMyArray = ourArray.pop(); //now ourArray is igual to  ["John" , 23]
+var removeFromMyArray = myArray.pop(); //now myArray is igual to ["Hola","como"], because pop remove the last element of my array.
 ```
+### Manipulate Arrays with shift()
+```javascript
+var myArray = ["Hola", "como", "estas"];
+var removeFromMyArray = myArray.shift(); //now myArray is igual to ["como","estas"], because this function removed the first element of my array and removeFromArray is ["Hola"]
+```
+
 ### Manipulate Arrays with unshift()
 ```javascript
 var myArray = ["Hola", "como", "estas"];
-var removeFromMyArray = myArray.unshift(); //now myArray is igual to ["como","estas"]
+var removeFromMyArray = myArray.unshift("Anibal"); //now myArray is igual to ["Anibal", "Hola","como", "estas"], because this function insert at the begining of my array
+```
 
-var ourArray = [ ["John" , 23], ["Quincy", 1] ]; 
-var removeFromMyArray = ourArray.unshift(); //now ourArray is igual to  ["Quincy", 1]
+### Shopping List
+```javascript
+var myList = [["Cereal", 3], ["milk", 2], ["bananas", 3], ["juice", 2]];
+```
+
+### Write Reusable code with Functions
+```javascript
+function ourReusableFunction(){
+  console.log("Hi, World");
+}
+
+ourReusableFunction(); //we'll call the function and then the function will print in the console Hi, World
+```
+### Passing Values to Function with Arguments
+```javascript
+function ourFunctionWithArgs(a, b){
+  console.log(a - b); 
+}
+
+ourFunctionWithArgs(13, 4); // we'll pass two values to the function, and then the function will print in console the result that is inside the function. The result in this case is 13 -4 => 9
+```
+### Global and Local Scope and Functions
+```javascript
+//This is a global variable, and we can call it in anywhere of the program
+var myGlobal = 10; //=> global scope
+
+function _functionOne(){
+  //this variables cannot be use in other function or anywhere of the program. Only in this function
+  var oopsGlobal = 5; // => Local Scope
+}
+
+function _functionTwo(){
+  var output= "";
+  if( typeof myGlobal !== "undefined"){
+    output += "myGlobal: " + myGlobal;
+  }
+  if( typeof oopsGlobal !== "undefined"){
+    oopsGlobal += "oopsGlobal: " + oopsGlobal;
+  }
+
+  console.log(output);
+}
+
+// i am going to call my two functions to print the result
+_functionOne();
+_functionTwo();
+```
+
+## Understanding undefined value returned from a function
+```javascript
+function minusSeven(num){
+  return num -7; //the name return means that the function will return a value, the operation num - 7
+}
+
+console.log(minusSeven(10)); // the function will return the value 7
+```## Return a Value from a Function with Return
+```javascript
+function minusSeven(num){
+  return num -7; //the name return means that the function will return a value, the operation num - 7
+}
+
+console.log(minusSeven(10)); // the function will return the value 7
 ```
