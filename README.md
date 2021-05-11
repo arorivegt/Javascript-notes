@@ -349,19 +349,434 @@ function _functionTwo(){
 _functionOne();
 _functionTwo();
 ```
+## Return a Value from a Function with Return
+```javascript
+function minusSeven(num){
+  return num -7; //the name return means that the function will return a value, the operation num - 7
+}
 
+console.log(minusSeven(10)); // the function will return the value 7
+```
 ## Understanding undefined value returned from a function
 ```javascript
-function minusSeven(num){
-  return num -7; //the name return means that the function will return a value, the operation num - 7
+var sum = 0;
+
+//in this case, it doesn't return a value, only did a operation or many operations
+function addThree(){
+  sum = sum + 3;
 }
 
-console.log(minusSeven(10)); // the function will return the value 7
-```## Return a Value from a Function with Return
+console.log(sum); // the function doesn't return a value, and we will print the value of the variable sum, because sum is a global variable
+```
+## Assignment with a returned value
 ```javascript
-function minusSeven(num){
-  return num -7; //the name return means that the function will return a value, the operation num - 7
+var changed = 0;
+
+function change(num){
+  return (num + 5) / 3;
 }
 
-console.log(minusSeven(10)); // the function will return the value 7
+changed = change(10); //we will assignment the value returned
+
+console.log(changed)
+```
+## Booleans value
+```javascript
+function booleanValuesFalse(){
+  return false;
+}
+function booleanValuesTrue(){
+  return true;
+}
+```
+## Use Conditional Logic with If Statements
+```javascript
+function ourTrueOrFalse(isItTrue){
+  //this is a conditional statement to determinate if the operation is true or false, in this case a it'll be sent a boolean value
+  if(isItTrue){ 
+    return "yes, it is true";
+  }
+  return "No, it is false";
+}
+
+console.log(ourTrueOrFalse(true)); //it will be printed => yes, it is true
+console.log(ourTrueOrFalse(false)); //it will be printed => no, it is no
+```
+## Comparison with the Equality Operator, Strict Equality Operator, Inequality Operator, Strict Inequality Operator
+```javascript
+function operatorComparison(values){
+  //this is the equality operator (==), to determinate if the value is equal to twelve
+  if(value == 12){ 
+    return "Equal with ==";
+  }
+  //this is the Strict Equality Operator (===), the different between the other equal (==) is the following => the equaity operator (==) try to convert both values being compared to a common type, example => 3 == '3' is true with this operator.
+  //the strict equality  (===) doesn't try to convert both values, example => 3 === '3', with this operator the result is false, because one of these is a number and the other is a string.
+   if(value === 13){ 
+    return "Equal with ===";
+  }
+  //this is the Inequality Operator (!=) what means that the different between of two values.
+  if(value != 14){ 
+    return "Nothing is equal with !=";
+  }
+  
+  //this is the Inequality Operator (!=) what means that the different between of two values. The different between the Inequality Operator is what the operator (!==) always considers operands of different types to be different
+  if(value !== 15){ 
+    return "Nothing is equal  with !==";
+  }  
+  
+  return "Nothing";
+}
+
+console.log(operatorComparison('12'));//it will be printed => Equal with ==
+console.log(operatorComparison(13));//it will be printed => Equal with ===
+console.log(operatorComparison(15));//it will be printed => Nothing is equal with !=
+console.log(operatorComparison(15));//it will be printed => Nothing is equal with !==
+```
+ ## Comparison with the Greater Operator
+```javascript
+function operatorComparison(values){
+  if ( values > 0 ){
+    return "the values is greater than 0";
+  }
+}
+
+console.log(operatorComparison(12));//it will be printed => the values is greater than 0
+console.log(operatorComparison(0));//it will not be printed because the values is not greater than 0, is igual but not greater than 0
+```
+ ## Comparison with the Greater than Or Equal to Operator
+```javascript
+function operatorComparison(values){
+  if ( values >= 0 ){
+    return "the values is Greater than Or Equal to 0";
+  }
+}
+
+console.log(operatorComparison(12));//it will be printed => the values is Greater than Or Equal to 0
+console.log(operatorComparison(0));//it will be printed => the values is Greater than Or Equal to 0
+```
+ ## Comparison with the Less than Operator
+```javascript
+function operatorComparison(values){
+  if ( values < 0 ){
+    return "the values is Less than 0";
+  }
+}
+
+console.log(operatorComparison(-12));//it will be printed => the values is Less than 0
+console.log(operatorComparison(0));//it will not be printed because the values is not Less than 0, is igual but not Less than 0
+```
+ ## Comparison with the Less Than Or Equal to Operator
+```javascript
+function operatorComparison(values){
+  if ( values <= 0 ){
+    return "the values is Less than Or Equql 0";
+  }
+}
+
+console.log(operatorComparison(-12));//it will be printed => the values is Less than Or Equql 0
+console.log(operatorComparison(0));//it will be printed => the values is Less than Or Equql 0
+```
+ ## Comparison with the Logical And Operator
+```javascript
+function operatorComparison(values){
+  if ( values >= 0  && values <= 10){
+    return "The values is greater  or equal than 10 and is less or equal to 0";
+  }
+}
+
+console.log(operatorComparison(-12));//it will be printed => The values is greater than 10 and is less or equal to 0
+console.log(operatorComparison(0));//it will be printed => The values is greater than 10 and is less or equal to 0
+```
+ ## Comparison with the Logical Or Operator
+```javascript
+function operatorComparison(values){
+  if ( values <= 0  || values >= 10){
+    return "The values is greater than or equal 10 or is less or equal to 0";
+  }
+}
+
+console.log(operatorComparison(-12));//it will be printed => The values is greater than or equal 10 or is less or equal to 0
+console.log(operatorComparison(10));//it will be printed => The values is greater than or equal 10 or is less or equal to 0
+console.log(operatorComparison(1));//it will not be printed because the value is not greater than or equal to then and is not less or equal to 0
+```
+ ## Else Statements
+```javascript
+function testElse(values){
+
+  if (value > 5 ){
+    return "this value is greater than five";
+  }else{
+    rerurn "this value isn't greater than five";
+  }
+}
+
+console.log(testElse(10));//it will be printed => this value is greater than five
+console.log(testElse(5));//it will be printed => this value isn't greater than five
+```
+ ## Else If Statements
+```javascript
+function testElseIf(values){
+
+  if (value > 5 ){
+    return "this value is greater than 5";
+  }else if(value < 5){
+    return "this value is less than 5";
+  }else{
+    return "this value is equal than 5";
+  }
+}
+
+console.log(testElseIf(10));//it will be printed => this value is greater than 5
+console.log(testElseIf(4));//it will be printed => this value is less than 5
+console.log(testElseIf(5));//it will be printed => this value is equal than 5
+```
+ ## Switch Statements
+```javascript
+function casInSwitch(values){
+  var asnwer = "";
+  switch(values){
+    case 1: //if the values is equal to 1
+      answer = "alpha";
+      break; //this mean the end of the case
+    case 2:
+      answer = "beta";
+      break;
+    case 3:
+      answer = "gama";
+    default:// when the values doesn't match with the other case, this statment return a default value
+      asnwer = "Stuff";
+      break;
+  }
+
+  return asnwer;
+}
+
+console.log(casInSwitch(1));//it will be printed => alpha
+console.log(testElseIf(2));//it will be printed => beta
+console.log(testElseIf(3));//it will be printed => "gama"
+console.log(testElseIf(4));//it will be printed => "Stuff"
+```
+ ## Multiple Identical Options in Switch Statements
+```javascript
+function casInSwitch(values){
+  var asnwer = "";
+  switch(values){
+    //when i will need the same answer with a cases different
+    case 1: 
+    case 2:
+    case 3:
+      asnwer = "Low";
+      break;
+    case 4: 
+    case 5:
+    case 6:
+      asnwer = "Mid";
+      break;
+    case 7: 
+    case 8:
+    case 9:
+      asnwer = "High";
+      break;
+    default:
+      asnwer = "Stuff";
+      break;
+  }
+
+  return asnwer;
+}
+
+console.log(casInSwitch(2));//it will be printed => Low
+console.log(testElseIf(5));//it will be printed => Mid
+console.log(testElseIf(9));//it will be printed => "High"
+console.log(testElseIf(10));//it will be printed => "Stuff"
+```
+ ## Return a Boolean value
+```javascript
+function casInSwitch(values){
+  return value > 5;
+}
+
+
+console.log(casInSwitch(10));//it will be printed => true
+console.log(testElseIf(5));//it will be printed => false
+```
+ ## Building JavaScript Objects
+```javascript
+var ourDog = {
+  "name":"Camper",
+  "legs":4,
+  "tails":1,
+  "friends":["Everything!"]
+};
+```
+ ## Accessging Object Properties with Dot Notation, Bracket Notation, Variables
+```javascript
+var ourDog = {
+  "name":"Camper",
+  "legs":4,
+  "tails":1,
+  "friends":["Everything!"]
+};
+
+var nameOfMyDog = ourDog.name; //dot notation
+var legOfMyDog = ourDog.legs; //dot notation
+var tailsOfMyDog = ourDog["tails"]; //bracket notation
+//Accesing Object properties with vriables
+var name = "name";
+var nameOfMyDogWithVariables = ourDog[name];
+
+console.log(nameOfMyDog); //it will be printed => Camper
+console.log(legOfMyDog); //it will be printed => 4
+console.log(tailsOfMyDog); //it will be printed => 1
+console.log(nameOfMyDogWithVariables); //it will be printed => 1
+```
+ ## Updating Object Properties
+```javascript
+var ourDog = {
+  "name":"Camper",
+  "legs":4,
+  "tails":1,
+  "friends":["Everything!"]
+};
+
+ourDog.name = "Koda";
+
+console.log(ourDog.name ); //it will be printed => Koda
+```
+ ## Add / Delete Properties to an Object
+```javascript
+var ourDog = {
+  "name":"Camper",
+  "legs":4,
+  "tails":1,
+  "friends":["Everything!"]
+};
+
+//we can add properties with dot notation or bracket notation to an object
+ourDog.bark = "bow-bow";
+ourDog['bark'] = "bow-bow";
+
+//delete properties to an object
+delete ourDog.bark;
+```
+ ## Using Objects for Lookups
+```javascript
+function phoneticLookup(values){
+  var result = "";
+
+  var lookup = {
+    "alpha":"Adams",
+    "bravo":"Boston",
+    "charlie":"Chigago",
+    "delta":"Denver"
+  }
+  result = lookup[val];
+
+  return result;
+}
+
+console.log(phoneticLookup("alpha")); //it will printed => Adams
+```
+
+ ## Accesing Nested Arrays
+```javascript
+
+var myObj =  [{
+  "alpha":"Adams",
+  "bravo":"Boston",
+  "charlie":"Chigago",
+  "delta":"Denver"
+},
+{
+  type: "trees".
+  list: ["fir","pine","birah"]
+}];
+
+var secondTree = myObj[1].list[1];
+console.log(secondTree); //it will printed => pine
+```
+ ## Record Collection
+```javascript
+
+var collection = {
+  "123":{
+    "album":"album1",
+    "artist":"artis1",
+    "track":[
+      "track1", "track2"
+    ]
+  },
+  "456":{
+    "album":"album1",
+    "artist":"artis1",
+    "track":[
+      "track1", "track2"
+    ]
+  },
+  "891":{
+    "album":"album1",
+    "artist":"artis1",
+    "track":[
+      "track1", "track2"
+    ]
+  }
+};
+ 
+//JSON.parse -> this method is for analyzed the content of a chain with json format
+//JSON.stringify -> this method converts an object or value from JavaScript in a JSON chain text
+var collectionCopy = JSON.parse(JSON.stringify(collection));
+
+function updateRecords(id, prop, value){
+  if (value ===""){
+    delete collection[id][prop];
+  }else if(prop === "Tracks"){
+    collection[id][prop] = collection[id][prop] || [];
+    collection[id][prop].push(value);
+  }else{
+    
+  }
+}
+
+updateRecords("891","album2", "album1");
+updateRecords("891","album2", "");
+```
+ ## Iterate with While Loops
+```javascript
+var myArray = [];
+
+var i = 0;
+while (i < 5){ //when the operator be true, the operator while continues with everything inside the curly braces
+  myArray.push(i); // adds the value inside the variable i into myArray
+  i++; //this is equal to => i = i + 1; the i will increase by 1 in each iteration
+}
+console.log(myArray) //the result is  [0, 1, 2, 3, 4]
+```
+ ## Iterate with For Loops
+```javascript
+var myArray = [];
+
+for (var i =0; i < 5; i++){ //the first thing it do, is the variable assignment ,when the operator be true i < 5, the operator for continues with everything inside the curly braces and this is equal to => i = i + 1; the variable i, will increase by 1 in each iteration
+  myArray.push(i); // adds the value inside the variable i into myArray
+  i++; //
+}
+console.log(myArray) //the result is  [0, 1, 2, 3, 4]
+```
+
+ ## Generate Random Fractions
+```javascript
+function randomFraction(){
+  return Math.random(); //this function return a value between 0 and 1, but never 1, almost 1
+}
+
+console.log(randomFraction());
+```
+ ## Generate Random Whole Numbers
+```javascript
+
+var randomNumberBetween0and19 = math.floor(Math.random() * 20);
+function randomWholeNum(){
+  return Math.random(); //this function return a value between 0 and 1, but never 1, almost 1
+}
+
+console.log(randomWholeNum());
 ```
