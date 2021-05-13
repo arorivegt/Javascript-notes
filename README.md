@@ -773,10 +773,133 @@ console.log(randomFraction());
  ## Generate Random Whole Numbers
 ```javascript
 
-var randomNumberBetween0and19 = math.floor(Math.random() * 20);
+//assigns to the variable between 0 and 20, but never 20, almost 20
+var randomNumberBetween0and19 = Math.floor(Math.random() * 20);
 function randomWholeNum(){
-  return Math.random(); //this function return a value between 0 and 1, but never 1, almost 1
+ // assigns to the variable between 0 and 10, but never 10, almost 10
+  return Math.floor(Math.random() * 10);
+}
+console.log(randomWholeNum());
+```
+ ## Generate Random Whole Numbers within a range
+```javascript
+function ourRandomRange(ourMin, ourMax){
+  return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+}
+console.log(ourRandomRange(1,9));
+```
+ ## Use the parseInt Function
+```javascript
+function convertToInteger(str){
+  //if the function can't convert the number from a string, then the function will return NaN (Not a Number)
+  return parseInt(str);
+}
+console.log(convertToInteger("2"));
+```
+ ## Use the parseInt Function with a Radix
+```javascript
+function convertToInteger(str){
+  //this function return the number in base 2 or whatever you want
+  return parseInt(str, 2);
+}
+console.log(convertToInteger("10011"));
+```
+ ## Use the Conditional(Ternary) Operator
+```javascript
+function checkEqual(a,b){
+  //can transform it in another expression more simple
+  /*
+  if ( a === b ){
+    return true;
+  }else{
+    return false;
+  }
+  */
+  return a === b ? true : false;
+}
+console.log(checkEqual(2,2)); //this function will return the value true
+console.log(checkEqual(2,3)); //this function will return the value false
+```
+ ## Use Multiple Conditional(Ternary) Operators
+```javascript
+function checkSign(num){
+  return num > 0 ? "positive" : num < 0 ? "negative" : "zero";
+}
+console.log(checkSign(2)); //this function will return the value positive
+console.log(checkSign(-2)); //this function will return the value negative
+console.log(checkSign(0)); //this function will return the value negative
+```
+ ## Differences Between tha var and let Keywords
+```javascript
+let catLastName = "Rodriguez";
+var catName = "Anibal";
+var quote ;
+//when i use the var keyword then it will accept the declaration duplicate
+//the var keyword is declare as global variable
+var catName = "Beau";
+//the program can't accept this, we will see an error message where will say, duplicate declaration "catLastName".
+//keyword is declared as local variable, this means the variable will only use in the scope where was declare
+let catLastName;
+```
+
+## Declare a Read-only Variable with the const Keyword
+```Javascript
+const number = 3.14 //The const keyword has the same properties as let, the difference is that it cannot be modified
+```
+## Prevent Object Mutation
+```Javascript
+function freezeObj(){
+  const MATH_CONSTANTS = {
+    PI: 3.14
+  };
+  //with this function i prevent object mutation
+  Object.freeze(MATH_CONSTANTS);
+
+  try{
+    MATH_CONSTANTS.PI = 99;
+  }catch( ex ){
+    console.log(ex);
+  }
+  return MATH_CONSTANTS.PI;
 }
 
-console.log(randomWholeNum());
+const PI = freezeObj();
+```
+## Use Arrow Functions to Write Concise Anonymous Functions
+```Javascript
+var magic = function() {
+  return new Date();
+}
+//the above we can write it like this 
+var magic = () => {
+  return new Date();
+}
+
+//more short
+const magic = () => new Date();
+```
+## Write Arrow Functions with Parameters
+```Javascript
+var myConcat = function(arr1, arr2) {
+  return arr1.concat(arr2)
+}
+
+//more short
+const myConcat = (arr1, arr2) => arr1.concat(arr2)
+```
+## Write Higher Order Arrow Functions
+```Javascript
+const squeareList = (arr1, arr2) => {
+  const squaredIntegers = arr.filter (num => Number.isInteger(num) && num > 0).map(x => x * x);
+  return squaredIntegers;
+}
+
+const increment = (function() {
+  //if it isn't paased in, it will be set to 1 automatically
+  return function increment(number, value = 1) {
+    return number + value;
+  }
+})();
+console.log(increment(5, 2));//the result will be 7
+console.log(increment(5)); //the result will be 6
 ```
