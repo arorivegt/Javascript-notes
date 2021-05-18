@@ -903,3 +903,171 @@ const increment = (function() {
 console.log(increment(5, 2));//the result will be 7
 console.log(increment(5)); //the result will be 6
 ```
+## Use the Rest Operator with Function Parameters
+```Javascript
+const sum = (function(){
+  return function sum(x, y, z){
+    const args = [x, y, z];
+    return args.reduce((a,b) => a + b, 0);
+  };
+})();
+
+const sum = (function(){
+//i put the rest operator (...) and convert everythong in an array
+  return function sum(...args){
+    return args.reduce((a,b) => a + b, 0);
+  };
+})();
+console.log(sum(1,2,3,6));
+```
+## Use the Spread Operator to Evaluate Array In-Place
+```Javascript
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+(function(){
+//in this case arr2 is equal to arr1, and when i change one of the values from arr1, i change arr2 too, because they are the same.
+  arr2 = arr1;
+  arr1[0] = 'potato'
+})
+
+let arr2;
+(function(){
+  //when i put the Spreed Operator([...]) then i copy all values from arr1 to arr2, when i change one of the arr1 values, the arr2 doesn't change, because they aren't the same
+  arr2 = [...arr1];
+  arr1[0] = 'potato'
+})
+
+console.log(arr2);
+```
+
+## Use Destructuring Assignment to Assign Variables from Objects
+```Javascript
+
+var voxel = {x:3.6, y:7.4, z:6.54};
+var x = voxel.x; //x = 3.6
+var y = voxel.y; //y = 7.4
+var z = voxel.z; //z = 6.54
+
+//this is the other form to create variables and assign the values from the array voxel instead of the previously
+const {x:a, y:b z: c} = voxel; //a:3.6, b:7.4, c:6.54
+
+const AVG_TEMPERATURES = {
+  today: 77.5,
+  tomorrow: 79
+};
+
+function getTempOfTmrw(avgTemperatures){
+  //const tempOfTomorrow = undefined; 
+  //inteasd of the previously i put the curly braces and colon, and now
+  // AVG_TEMPERATURES.tomorrow has the value avgTemperatures
+  const {tomorrow: tempOfTomorrow} = avgTemperatures; 
+
+  return tempOfTomorrow;
+}
+
+console.log(getTempOfTmrw(AVG_TEMPERATURES));
+```
+## Destructuring Assignment with Nested Objects
+```Javascript
+const LOCAL_FOREST = {
+  today: {min: 72, max:83},
+  tomorrow: {min:73.3, max:84.6}
+}
+
+function getMaxOfTmrw(forecast){
+
+  //when i put the following sintaxis i say that maxOfTomorrow is equal to tomorrow.max, if y run this function i will get the value 84.6 of the object
+  const { tomorrow: {max : maxOfTomorrow} } =  forecast;
+
+  return maxOfTomorrow;
+}
+
+console.log(getMaxOfTmrw(LOCAL_FOREST));
+```
+## Use Destructuring Assignment to Asign variables from arrays
+```Javascript
+//when I put the comma without nothing in the middle and the following is a variable, then my array take the next value from the other array, then z is equal to 1, x is equal to 2 and y is equal to 4, because I used the comma without nothing in the middle
+const [z, x, ,y] = [1,2,3,4,5,6];
+console.log(z, x, y);
+
+let a = 8, b = 6;
+(() => {
+  /*the following destructuring is about to switch a with b, when I assign [a,b] with the following array [b, a] I change the order of the values, and then I print a and b, and the variables are change*/
+  [a,b] =  [b,a]
+})();
+
+console.log(a); // it's going to print 6
+console.log(b); // it's going to print 8
+```
+## Use Destructuring Assignment with the Rest Operator
+```Javascript
+//I have the elements array with the numbers from one to ten
+const source = [1,2,3,4,5,6,7,8,9,10];
+
+function removeFirstTwo(list){
+
+//when I put the brackets and in the middle two commas without any value and followed by ...arr, I say to the program, copy all elements from the list without the first and second elements
+  const [, , ...arr] = list;
+  return arr;
+}
+
+const arr = removeFirstTwo(source);
+console.log(arr); // it's going to print [1,2,3,4,5,6,7,8,9,10]
+console.log(source); // it's going to print [3,4,5,6,7,8,9,10]
+
+```
+
+## Use Destructuring Assignment to pass an object as a function's parameters
+```Javascript
+const stats = {
+  max: 56.78,
+  standard_deviation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85
+}
+
+const half = (function() {
+  /*
+  return function half(stats) {
+    return (stats.max + stats.min) / 2.0;
+  };*/
+  
+  return function half({max, min}) {
+    //instead of the above, I used the following, I put curly braces and the variables of the object that I needed, in this case, max and min from the object, and then I remove stat.max and put only max and the same for the other, I remove stat.min and put only min
+    return(max + min) / 2.0;
+  };
+})();
+console.log(stats);
+console.log(half(stats));
+```
+# Create String using Template Literals
+```Javascript
+const person = {
+  name: "Zodiac Hasbro",
+  age:56
+};
+
+const greeting = `Hello, mi name is ${person.name}! 
+I am ${person.age} years old`;
+
+console.log(greeting);
+
+const result = {
+  succes : ["max-length", "non-amd", "prefer-arrow-functions"],
+  falure : ["no-var", "var-on-op", "linebreak"],
+  skipped : ["id-blacklist", "non-dup-keys"],
+};
+
+function makeList(arr){
+  const resultDisplayRrray = [];
+  for (let i = 0; i < arr.length; i++){
+    resultDisplayArray.push(`<li class="text-warning">${arr[i]} </li>`);
+  }
+  return resultDisplayArray;
+}
+
+const resultDisplayArray = makeList(result.falure);
+console.log(resultDisplayArray);
+```
