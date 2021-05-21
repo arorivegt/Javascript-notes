@@ -1071,3 +1071,161 @@ function makeList(arr){
 const resultDisplayArray = makeList(result.falure);
 console.log(resultDisplayArray);
 ```
+
+# Write Concise Object Literal Declarations Using Simple Fields
+```JavaScript
+const createPerson = (name, age, gender) => {
+
+  return {
+    name: name,
+    age:age.
+    gender: gender
+  };
+};
+//instead of the above, I rewriting the code more simple because this change does the same thing the above and then i receive  an object
+const createPerson = (name, age, gender) => ({name, age, gender});
+
+console.log(createPerson("Zodiac Hasbro",56,"Male"));
+```
+# Write Concise Object Declarations Functions
+```JavaScript
+const bicycle = {
+  gear:2.
+  setGear: function(newGear){
+    this.gear = newGear;
+  }
+};
+//instead of the previous code, in an object, we can put a function, but I can rewrite the function without the function clause
+const bicycle = {
+  gear:2.
+  setGear(newGear){
+    this.gear = newGear;
+  }
+};
+
+console.log(createPerson("Zodiac Hasbro",56,"Male"));
+```
+
+# Use Class Syntax to Define a Constructor Function
+```JavaScript
+
+//old way to creatte a contructor function
+var SpaceShuttle = function(targetPlanet){
+  this.targetPlanet = targetPlanet;
+}
+
+//instead of the previous code, I use the next one and does the same thing as the previous one
+class SpaceShuttle{
+  constructor(targetPlanet){
+    this.targetPlanet = targetPlanet;
+  }
+}
+
+var zeus = new SpaceShuttle('Jupiter');
+
+console.log(zeus.targetPlanet);
+
+
+//another example
+function makeClass(){
+  class Vegetable {
+    constructor(name){
+      this.name = name;
+    }
+  }
+  return Vegetable;
+}
+
+const Vegetable = makeClass();
+const carrot = new Vegetable('carrot');
+console.log(carrot.name);
+```
+# Use getter and setter to Control Access to an Object
+```Javascript
+class Book{
+  constructor(author){
+    this._author = author;
+  }
+
+  //getter
+  get writer(){
+    return this._author;
+  }
+  
+  //setter
+  set writer(updateAuthor){
+    this._author =  updatedAuthor;
+  }
+}
+
+function maskeClass(){
+  class Thermostat{
+    constructor(temp){
+      this._temp = 5/9 * (temp - 32);
+    }
+
+    get temperature(){
+      return this._temp;
+    }
+
+    set temperature(updatedTemp){
+      cthis._temp = updatedTemp;
+    }
+
+
+  } 
+  return Thermostat;
+}
+
+const Thermostat = makeClass();
+const thermos = new Thermostat(76);
+let temp = thermos.temperature; //this line means that we use the getter
+thermos.temperature = 26; //this line means that we use the setter
+temp = thermos.temperature;
+
+console.log(temp);
+```
+# Understand the Differences Between import and require
+```Javascript
+//String_functions.js
+//export this function and then we can use it in other files
+export const capitalizeString = str => str.tpUpperCase();
+
+//index.js
+
+//we import the function we needed
+import { capitalizeString } from  "./String_functions"
+const cap = capitalizeString("Hello");
+
+console.log(cap);
+```
+# Use export to Reuse a Code Block
+```Javascript
+//index.js
+
+const capitalizeString = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export { capitalizeString };
+
+export const foo = "bar";
+export const bar = "foo";
+```
+# Use * to Import Everything from a File
+```Javascript
+
+//first, write import and then asterisk which means that I import all from the destine file 
+import * as capitalizeStrings from "capitalize_strings";
+```
+
+# Create an Export Fallback with export default
+```Javascript
+//math_function.js
+export default function subtract(x,y) {return x-y;}
+```
+# Import a defacult Export
+```Javascript
+import subtract from "math_function";
+subtract(7,4);
+```
